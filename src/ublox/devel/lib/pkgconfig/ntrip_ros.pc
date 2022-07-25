@@ -1,0 +1,8 @@
+prefix=/home/dongri/Project_laptop/AI-racing-localization/ublox/devel
+
+Name: ntrip_ros
+Description: Description of ntrip_ros
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
