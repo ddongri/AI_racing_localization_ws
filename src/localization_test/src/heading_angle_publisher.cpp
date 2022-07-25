@@ -92,8 +92,14 @@ public:
             displacement.pose.pose.position.x = position_x_ - prev_position_x_;
             displacement.pose.pose.position.y = position_y_ - prev_position_y_;
 
-            heading.data = 0; //atan(displacement.pose.pose.position.y / displacement.pose.pose.position.x);
+            heading.data = atan(displacement.pose.pose.position.y / displacement.pose.pose.position.x);
 
+            if(displacement.pose.pose.position.x < 0 && displacement.pose.pose.position.y > 0)
+                heading.data = heading.data + Pi;
+
+            else if(displacement.pose.pose.position.x < 0 && displacement.pose.pose.position.y < 0)
+                heading.data = heading.data - Pi;
+            
             heading_quaternion.setRPY( 0, 0, heading.data );
 
             displacement.pose.pose.orientation.x = heading_quaternion.getX();
